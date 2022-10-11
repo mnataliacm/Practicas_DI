@@ -10,11 +10,46 @@ namespace Practicas
     {
         static void Main(string[] args)
         {
-            Practica2();
+            Practica3();
+            //Practica2();
             //Practica1();
         }
 
+        #region Practica 3
+        static void Practica3()
+        {
+            const string REPETIR_BUCLE = "S";
+            string respuesta = string.Empty;
+            int c = 0;
 
+            while (string.IsNullOrEmpty(respuesta))
+            {
+                Console.WriteLine("¿Quieres entrar al bucle? (S/N)");
+                respuesta = LeerRespuesta(Console.ReadLine().ToUpper());
+            }
+
+            while (string.Equals(respuesta, REPETIR_BUCLE))
+            {
+                c++;
+                Console.WriteLine("¿Quieres entrar al bucle de nuevo (" + c + ") ? (S/N)");
+                respuesta = Console.ReadLine().ToUpper();
+            }
+            Console.WriteLine("Has salido del bucle");     
+        }
+
+        private static String LeerRespuesta(string r)
+        {
+            if ((string.Equals(r, "S") || (string.Equals(r, "N"))))
+            {
+                return r;
+            }
+            else
+            {
+                Console.WriteLine("La respuesta solo puede ser 'S' o 'N', vuelve a intentarlo");
+                return null;
+            }
+        }
+        #endregion
 
         #region Practica 2
         static void Practica2()
@@ -29,7 +64,7 @@ namespace Practicas
             {
                 Console.WriteLine("¿Tienes carnet? (S/N): ");
                 string carnet = Console.ReadLine().ToUpper();
-                if (string.Equals(carnet, TIENE_CARNET))
+                if (String.Equals(carnet, TIENE_CARNET))
                 {
                     Console.WriteLine("Puedes conducir");
                 }
