@@ -6,19 +6,54 @@ using System.Threading.Tasks;
 
 namespace Practicas
 {
+    
     internal class Program
     {
+        const string REPETIR_BUCLE = "S";
+        const string NO_REPETIR_BUCLE = "N";
         static void Main(string[] args)
         {
-            Practica3();
+            Practica4();
+            //Practica3();
             //Practica2();
             //Practica1();
         }
 
+
+        #region Practica 4
+        static void Practica4()
+        {
+            string respuesta = string.Empty;
+
+            respuesta = LeerRespuesta();
+
+            do
+            {
+                respuesta = LeerRespuesta();
+            } while (String.Equals(respuesta, REPETIR_BUCLE));
+
+            Console.WriteLine("Has salido del bucle");
+        }
+        static string LeerRespuesta() 
+        {
+            string respuesta = string.Empty;
+            Console.WriteLine("¿Quieres entrar al bucle? (S/N)");
+            respuesta = Console.ReadLine().ToUpper();
+            do
+            {
+                Console.WriteLine("Debes introducir N o S");
+                respuesta = Console.ReadLine().ToUpper();
+            } while(!respuesta.Equals(NO_REPETIR_BUCLE) && !respuesta.Equals(REPETIR_BUCLE));
+
+            return respuesta;
+        }
+        #endregion
+
         #region Practica 3
+        //mejor hacer como está la practica 4
         static void Practica3()
         {
-            const string REPETIR_BUCLE = "S";
+            
             string respuesta = string.Empty;
             int c = 0;
 
@@ -37,7 +72,7 @@ namespace Practicas
             Console.WriteLine("Has salido del bucle");     
         }
 
-        private static String LeerRespuesta(string r)
+        private static string LeerRespuesta(string r)
         {
             if ((string.Equals(r, "S") || (string.Equals(r, "N"))))
             {
